@@ -1,3 +1,3 @@
-test('adds 3 + 2 to equal 5', () => {
-  expect(3+2).toBe(5);
+test('adds 2 + 3 to equal 5', () => {
+  expect(2+3).toBe(5);
 });
