@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-server-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-server-app
+  template:
+    metadata:
+      labels:
+        app: todo-server-app
+    spec:
+      containers:
+      - name: todo-server-app
+        image: meharabdullah/todo-app-k8s:latest
+        ports:
+        - containerPort: 5000
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+            name: todo-server-app-configs
+        - secretRef:
+            name: todo-server-app-secrets
+      imagePullSecrets:
+      - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-server-app-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: todo-server-app
+  ports:
+  - port: 5000
+    targetPort: 5000
