@@ -9,7 +9,7 @@ steps:
   commands:
   - npm install
   - npm test
-  - echo -n "${DRONE_COMMIT}, latest" > .tags
+  - echo -n "${DRONE_COMMIT}" > .tags
 
 - name: publish  
   image: plugins/docker
