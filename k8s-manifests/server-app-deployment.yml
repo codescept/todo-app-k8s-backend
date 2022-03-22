@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: todo-server-app
-        image: meharabdullah/todo-app-k8s:latest
+        image: meharabdullah/todo-server-app:latest
         ports:
         - containerPort: 5000
         imagePullPolicy: IfNotPresent

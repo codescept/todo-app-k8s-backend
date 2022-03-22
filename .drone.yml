@@ -9,12 +9,12 @@ steps:
   commands:
   - npm install
   - npm test
-  - echo -n "${DRONE_COMMIT}" > .tags
+  - echo -n "${DRONE_COMMIT}, latest" > .tags
 
 - name: publish  
   image: plugins/docker
   settings:
-    repo: meharabdullah/todo-app-k8s
+    repo: meharabdullah/todo-server-app
     username:
       from_secret: docker_username
     password:
